@@ -15,3 +15,6 @@ dependencies:
   habitat:
     github: luckyframework/habitat
     version: 0.4.4
+  lucky_cli:
+    github: luckyframework/lucky_cli
+    version: 0.24.0

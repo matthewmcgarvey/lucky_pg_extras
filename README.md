@@ -11,14 +11,23 @@
    ```
 
 2. Run `shards install`
+3. Require the shard in `src/shards.cr`
+
+  ```crystal
+  require "lucky_db_extras"
+  ```
+
+4. Set up the configuration in `config/lucky_db_extras.cr`
+
+  ```crystal
+  LuckyDbExtras.configure do |settings|
+    settings.database = AppDatabase
+  end
+  ```
 
 ## Usage
 
-```crystal
-require "lucky_db_extras"
-```
-
-TODO: Write usage instructions here
+Running `lucky -h` should now show the `db.extras` commands that are available.
 
 ## Development
 
