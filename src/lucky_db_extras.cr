@@ -1,6 +1,7 @@
 require "avram"
 require "habitat"
 require "lucky_cli"
+require "tallboy"
 require "../tasks/**"
 
 module LuckyDbExtras
