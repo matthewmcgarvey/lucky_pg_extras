@@ -1,5 +1,7 @@
 # lucky_db_extras
 
+Crystal port of [Ruby PG Extras](https://github.com/pawurb/ruby-pg-extras) which is a Ruby port of [Heroku PG Extras](https://github.com/heroku/heroku-pg-extras).
+
 ## Installation
 
 1. Add the dependency to your `shard.yml`:
