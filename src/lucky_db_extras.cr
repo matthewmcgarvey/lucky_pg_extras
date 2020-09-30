@@ -12,7 +12,7 @@ module LuckyDbExtras
   end
 
   {% begin %}
-    {% extras = ["unused_indexes", "extensions", "cache_hit"] %}
+    {% extras = ["unused_indexes", "extensions", "cache_hit", "all_locks"] %}
     {% for extra in extras %}
       def self.{{ extra.id }}
         LuckyDbExtras.settings.database.run do |db|
