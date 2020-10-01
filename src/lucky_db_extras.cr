@@ -6,7 +6,7 @@ require "./lucky_db_extras/**"
 
 module LuckyDbExtras
   VERSION = "0.1.0"
-  EXTRAS = [
+  QUERIES = [
     "bloat", "blocking", "cache_hit",
     "calls", "extensions", "table_cache_hit", "index_cache_hit",
     "index_size", "index_usage", "locks", "all_locks",
@@ -21,10 +21,10 @@ module LuckyDbExtras
   end
 
   macro finished
-    {% for extra in EXTRAS %}
-      def self.{{ extra.id }}
-        result = execute_query_for({{ extra }})
-        description = description_for({{ extra }})
+    {% for query in QUERIES %}
+      def self.{{ query.id }}
+        result = execute_query({{ query }})
+        description = description_for({{ query }})
         table = result.nil? ? empty_table(description) : create_table(description, result)
         puts table
       end
@@ -46,11 +46,11 @@ module LuckyDbExtras
     end
   end
 
-  def self.execute_query_for(extra)
+  def self.execute_query(query)
     LuckyDbExtras.settings.database.run do |db|
       column_names = [] of String
       rows = [] of Array(String)
-      db.query sql_for(extra) do |rs|
+      db.query sql_for(query) do |rs|
         return if rs.column_count.zero?
         # The first row: column names
         rs.column_count.times.each { |i| column_names << rs.column_name(i).as(String) }
