@@ -1,7 +1,6 @@
 abstract class LuckyDbExtras::BaseTask < LuckyCli::Task
   macro db_extra(name)
-    {% klass = name.stringify.camelcase.id %}
-    summary LuckyDbExtras::{{ klass }}::SUMMARY
+    summary LuckyDbExtras.description_for({{ name.stringify }})
     def call
       result = LuckyDbExtras.{{ name }}
       

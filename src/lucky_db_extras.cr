@@ -38,6 +38,12 @@ module LuckyDbExtras
     {% end %}
   {% end %}
 
+  def self.description_for(query_name)
+    first_line = File.open(sql_path_for(query_name: query_name), &.read_line)
+
+    first_line[/\/\*(.*?)\*\//m, 1].strip
+  end
+
   def self.sql_for(query_name)
     File.read(
       sql_path_for(query_name)
