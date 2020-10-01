@@ -6,7 +6,15 @@ require "./lucky_db_extras/**"
 
 module LuckyDbExtras
   VERSION = "0.1.0"
-  EXTRAS = ["unused_indexes", "extensions", "cache_hit", "all_locks"]
+  EXTRAS = [
+    "bloat", "blocking", "cache_hit",
+    "calls", "extensions", "table_cache_hit", "index_cache_hit",
+    "index_size", "index_usage", "locks", "all_locks",
+    "long_running_queries", "mandelbrot", "outliers",
+    "records_rank", "seq_scans", "table_indexes_size",
+    "table_size", "total_index_size", "total_table_size",
+    "unused_indexes", "vacuum_stats", "kill_all"
+  ]
 
   Habitat.create do
     setting database : Avram::Database.class
@@ -77,4 +85,4 @@ module LuckyDbExtras
   end
 end
 
-require "../tasks/**"
+require "../tasks/generate_tasks"
