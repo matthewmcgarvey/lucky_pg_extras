@@ -2,9 +2,8 @@ require "avram"
 require "habitat"
 require "lucky_cli"
 require "tallboy"
-require "./lucky_db_extras/**"
 
-module LuckyDbExtras
+module LuckyPgExtras
   VERSION = "0.1.0"
   QUERIES = [
     "bloat", "blocking", "cache_hit",
@@ -47,7 +46,7 @@ module LuckyDbExtras
   end
 
   def self.execute_query(query)
-    LuckyDbExtras.settings.database.run do |db|
+    LuckyPgExtras.settings.database.run do |db|
       column_names = [] of String
       rows = [] of Array(String)
       db.query sql_for(query) do |rs|
@@ -81,7 +80,7 @@ module LuckyDbExtras
   end
 
   def self.sql_path_for(query_name)
-    File.join(File.dirname(__FILE__), "/lucky_db_extras/queries/#{query_name}.sql")
+    File.join(File.dirname(__FILE__), "/lucky_pg_extras/queries/#{query_name}.sql")
   end
 end
 

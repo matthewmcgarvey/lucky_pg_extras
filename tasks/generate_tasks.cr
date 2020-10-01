@@ -1,8 +1,8 @@
-{% for query in LuckyDbExtras::QUERIES %}
-  class DbExtras::{{ query.camelcase.id }} < LuckyCli::Task
-    summary LuckyDbExtras.description_for({{ query }})
+{% for query in LuckyPgExtras::QUERIES %}
+  class PgExtras::{{ query.camelcase.id }} < LuckyCli::Task
+    summary LuckyPgExtras.description_for({{ query }})
     def call
-      LuckyDbExtras.{{ query.id }}
+      LuckyPgExtras.{{ query.id }}
     end
   end
 {% end %}

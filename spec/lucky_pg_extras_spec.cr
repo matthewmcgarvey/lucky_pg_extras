@@ -1,6 +1,6 @@
 require "./spec_helper"
 
-describe LuckyDbExtras do
+describe LuckyPgExtras do
   # TODO: Write tests
 
   it "works" do
