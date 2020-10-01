@@ -1,6 +1,5 @@
 class LuckyDbExtras::CacheHit
   SUMMARY = "Index and table hit rate"
-  RESULT_STRUCTURE = {name: String, ratio: PG::Numeric}
   SQL = <<-SQL
     SELECT
       'index hit rate' AS name,

@@ -1,6 +1,5 @@
 class LuckyDbExtras::UnusedIndexes
   SUMMARY = "Unused and almost unused indexes"
-  RESULT_STRUCTURE = {table: String, index: String, index_size: String, index_scans: Int32}
   SQL = <<-SQL
     SELECT
       schemaname || '.' || relname AS table,

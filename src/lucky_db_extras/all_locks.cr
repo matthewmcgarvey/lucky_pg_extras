@@ -1,6 +1,5 @@
 class LuckyDbExtras::AllLocks
   SUMMARY = "Queries with active locks"
-  RESULT_STRUCTURE = {pid: Int32, relname: String, transactionid: String, granted: Bool, mode: String, query_snippet: String, age: Time}
   SQL = <<-SQL
     SELECT
       pg_stat_activity.pid,

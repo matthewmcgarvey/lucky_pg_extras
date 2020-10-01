@@ -4,12 +4,25 @@ abstract class LuckyDbExtras::BaseTask < LuckyCli::Task
     summary LuckyDbExtras::{{ klass }}::SUMMARY
     def call
       result = LuckyDbExtras.{{ name }}
-      table = Tallboy.table do
-        header summary.colorize(:yellow), align: :center
-        header LuckyDbExtras::{{ klass }}::RESULT_STRUCTURE.keys.to_a.map &.to_s
-        rows result.map &.values.to_a.map &.to_s
-      end
-      puts table
+      
+      puts create_table(result)
+    end
+  end
+
+  private def create_table(_result : Nil)
+    Tallboy.table do
+      header summary.colorize(:yellow), align: :center
+      header ["No results"]
+    end
+  end
+
+  private def create_table(result)
+    return if result.nil?
+
+    Tallboy.table do
+      header summary.colorize(:yellow), align: :center
+      header result[:column_names]
+      rows result[:rows]
     end
   end
 end
