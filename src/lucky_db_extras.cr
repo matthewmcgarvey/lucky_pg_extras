@@ -14,10 +14,28 @@ module LuckyDbExtras
 
   macro finished
     {% for extra in EXTRAS %}
-      def self.{{ extra.id }} : NamedTuple(column_names: Array(String), rows: Array(Array(String)))?
-        execute_query_for({{ extra }})
+      def self.{{ extra.id }}
+        result = execute_query_for({{ extra }})
+        description = description_for({{ extra }})
+        table = result.nil? ? empty_table(description) : create_table(description, result)
+        puts table
       end
     {% end %}
+  end
+
+  def self.empty_table(description)
+    Tallboy.table do
+      header description.colorize(:yellow), align: :center
+      header ["No results"]
+    end
+  end
+
+  def self.create_table(description, result)
+    Tallboy.table do
+      header description.colorize(:yellow), align: :center
+      header result[:column_names]
+      rows result[:rows]
+    end
   end
 
   def self.execute_query_for(extra)
