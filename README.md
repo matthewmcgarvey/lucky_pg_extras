@@ -27,6 +27,8 @@ Crystal port of [Ruby PG Extras](https://github.com/pawurb/ruby-pg-extras) which
    end
    ```
 
+Some of the queries (e.g., `calls` and `outliers`) require [pg_stat_statements](https://www.postgresql.org/docs/current/pgstatstatements.html) extension enabled.
+
 ## Usage
 
 Running `lucky -h` should now show the `pg_extras` commands that are available.
