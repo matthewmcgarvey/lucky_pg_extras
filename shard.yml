@@ -4,20 +4,20 @@ version: 0.1.0
 authors:
   - Matthew McGarvey
 
-crystal: 0.35.1
+crystal: ">= 1.0.0"
 
 license: MIT
 
 dependencies:
   avram:
     github: luckyframework/avram
-    version: 0.17.0
+    version: ~> 0.20
   habitat:
     github: luckyframework/habitat
-    version: 0.4.4
-  lucky_cli:
-    github: luckyframework/lucky_cli
-    version: 0.24.0
+    version: ~> 0.4.7
+  lucky_task:
+    github: luckyframework/lucky_task
+    version: ~> 0.1
   tallboy:
     github: epoch/tallboy
-    version: 0.9.3
+    branch: master

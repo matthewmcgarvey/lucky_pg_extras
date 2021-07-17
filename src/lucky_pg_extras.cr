@@ -1,6 +1,6 @@
 require "avram"
 require "habitat"
-require "lucky_cli"
+require "lucky_task"
 require "tallboy"
 
 module LuckyPgExtras
@@ -12,7 +12,7 @@ module LuckyPgExtras
     "long_running_queries", "mandelbrot", "outliers",
     "records_rank", "seq_scans", "table_indexes_size",
     "table_size", "total_index_size", "total_table_size",
-    "unused_indexes", "vacuum_stats", "kill_all"
+    "unused_indexes", "vacuum_stats", "kill_all",
   ]
 
   Habitat.create do
@@ -59,10 +59,10 @@ module LuckyPgExtras
           rows << rs.column_count.times.map { rs.read.to_s }.to_a
         end
       end
-      
+
       {
         column_names: column_names,
-        rows: rows
+        rows:         rows,
       }
     end
   end
