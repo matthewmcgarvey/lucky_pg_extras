@@ -4,7 +4,7 @@ require "lucky_task"
 require "tallboy"
 
 module LuckyPgExtras
-  VERSION = "0.1.0"
+  VERSION = "0.2.0"
   QUERIES = [
     "bloat", "blocking", "cache_hit",
     "calls", "extensions", "table_cache_hit", "index_cache_hit",
